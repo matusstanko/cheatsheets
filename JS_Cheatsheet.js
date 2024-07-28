@@ -1,3 +1,7 @@
+// JS CHEATSHEET
+// Matus Stanko 07/2024
+
+
 
 // Variables
 var age; // before ES6
@@ -102,3 +106,4 @@ const numbers = [1, 2, 3];
 const allPositiveNumbers = numbers.every(number => {
   return number > 0; // returns true
 });
+

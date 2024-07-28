@@ -107,3 +107,72 @@ const allPositiveNumbers = numbers.every(number => {
   return number > 0; // returns true
 });
 
+// Objects
+let spaceship = {
+  color : 'red',
+  flightPath : ['Earth', 'Mars']
+}
+// Object properties
+spaceship.color // 'red'
+// Object Bracket notation
+spaceship['flightPath'] // ['Earth', 'Mars']
+
+spaceship.color = 'blue' // Changing value 
+spaceship.color_2 = 'red' // Adding new property
+delete spaceship.color_2 // Deleting property
+
+// Methods in Object
+let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+alienShip = {
+  retreat () {
+    console.log(retreatMessage)
+  },
+  takeOff () {
+    console.log('Spim... Borp... Glix... Blastoff!')
+  }
+}
+alienShip.retreat()
+alienShip.takeOff()
+
+// Pass by reference
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth'
+};
+
+let greenEnergy = obj => {
+  obj['Fuel Type'] = 'avocado oil'
+}
+
+greenEnergy(spaceship)
+
+// ITERATING IN OBJECTS
+
+let spaceship = {
+  crew: {
+  captain: { 
+      name: 'Lily', 
+      degree: 'Computer Engineering', 
+      cheerTeam() { console.log('You got this!') } 
+      },
+  'chief officer': { 
+      name: 'Dan', 
+      degree: 'Aerospace Engineering', 
+      agree() { console.log('I agree, captain!') } 
+      },
+  medic: { 
+      name: 'Clementine', 
+      degree: 'Physics', 
+      announce() { console.log(`Jets on!`) } },
+  translator: {
+      name: 'Shauna', 
+      degree: 'Conservation Science', 
+      powerFuel() { console.log('The tank is full!') } 
+      }
+  }
+}; 
+
+for (let crew_member in spaceship.crew) {
+console.log(`${crew_member}: ${spaceship.crew[crew_member].name}`)
+}
+

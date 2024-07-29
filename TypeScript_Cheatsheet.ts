@@ -1,4 +1,4 @@
-// JS CHEATSHEET
+// TS CHEATSHEET
 // Matus Stanko 07/2024
 
 // Anotations

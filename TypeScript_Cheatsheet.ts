@@ -159,4 +159,214 @@ coordinateArray = getFilledArray<[number, number]>([3,4],6); // array with two n
 
 
 
- 
+// Unions
+function printNumsAndStrings(statement: number | string) { // type can be number or string
+  console.log(`ℹ️ LOG:: ${statement}`);
+}
+
+// Inferred Union Return Types: To define output of function using self defined type
+type User = { // Self defined type
+  id: number;
+  username: string;
+};
+
+function createUser() { // Function that returns string or object defined as User.
+  const randomChance = Math.random() >= 0.5;
+  if (randomChance) {
+    return { id: 1, username: 'nikko' };
+  } else {
+    return 'Could not create a user.';
+  }
+}
+
+let userData: User | string = createUser() // userData must be type: string or User: {id:number, username: string}
+
+
+// Type guards: If statements to check type. if(typeof arg === 'string'){...}
+
+//
+type Cat = {
+  name: string;
+  run: () => string;
+}
+
+type Fish = {
+  name: string;
+  swim: () => string;
+}
+
+const siameseCat = { 
+  name: 'Proxie', 
+  run: () => 'pitter pat'
+}
+
+function move(pet: Cat | Fish) {
+  if('swim' in pet){
+    return pet.swim();
+  } if ('run' in pet){
+    return pet.run();
+  }
+}
+
+console.log(move(siameseCat)) // prints pitter pat
+
+// Interfaces: interface can only be used to type objects
+// Write an interface here
+interface Run{
+  miles: number;
+}
+
+function updateRunGoal(run: Run) {
+  console.log(`
+Miles left:       ${50 - run.miles}
+Percent of goal:  ${(run.miles / 50) * 100}% complete
+  `)
+}
+
+updateRunGoal({
+  miles: 5,
+})
+
+
+// Interfaces and Classes
+// Write an interface here
+interface Directory { // Interface with add file
+  addFile: (name: string) => void;
+}
+
+class DesktopDirectory implements Directory{ // Class that implements Directory type
+  addFile(name: string) {
+    console.log(`Adding file: ${name}`);
+  }
+
+  showPreview(name: string) {
+    console.log(`Opening preview of file: ${name}`);
+  }
+}
+
+const Desktop = new DesktopDirectory();
+
+Desktop.addFile('lesson-notes.txt');
+Desktop.showPreview('lesson-notes.txt');
+
+// Composed types: Nested 
+interface Directory { 
+  addFile: (name: string) => void;
+  config: Config 
+}
+
+interface DefaultConfig {
+  encoding: string,
+  permissions: string
+}
+interface Config {
+  default: DefaultConfig
+}
+//THIS CAN BE ALSO WRITTEN AS:
+interface Directory {
+  addFile: (name: string) => void;
+  config: {
+    default: {
+      encoding: string;
+      permissions: string;
+    }
+  }
+}
+
+
+class DesktopDirectory implements Directory {
+  config = {
+    default: {
+      encoding: 'utf-8',
+      permissions: 'drw-rw-rw-',
+    }
+  }
+
+  addFile(name: string) {
+    console.log(`Adding file: ${name}`);
+  }
+
+  showPreview(name: string) {
+    console.log(`Opening preview of file: ${name}`);
+  }
+}
+
+const Desktop = new DesktopDirectory();
+
+console.log(Desktop.config);
+
+// Extending Interfaces
+
+interface Human { // Defining interface human
+  name: string;
+  hobbies: string[];
+}
+
+interface Developer extends Human { // Adding human to developer and adding 'code'
+  code: () => void;
+}
+const me: Developer = { 
+  code: () => console.log('Headphones on. Coffee brewed. Editor open.'),
+  name: 'Corrina', 
+  hobbies: ['Building rockets']
+}
+
+me.code();
+
+
+// Index signatures
+
+import { getBudgetAsync } from './api';
+
+/*
+
+output will look like this, so I need to declare interface with signature.
+
+{
+  'shopping': 150,
+  'food': 210,
+  'utilities': 100
+}
+
+*/
+
+interface Budget {  
+  [category: string]: number
+}
+
+async function getBudget() {
+  const result: Budget = await getBudgetAsync();
+  console.log(result);
+}
+
+getBudget();
+
+
+
+// Optional Type Members
+
+interface UserNameOptions {
+  firstName?: string;
+  lastName?: string;
+  username: string
+}
+
+
+function getUserName(options: UserNameOptions) {
+  if (options.firstName && options.lastName) {
+    return console.log(`${options.firstName} ${options.lastName}`);
+  }
+
+  return console.log(options.username);
+}
+
+getUserName({
+  firstName: 'Mr.',
+  lastName: 'Oshiro',
+  username: 'hotelowner304'
+})
+
+getUserName({
+  firstName: 'Madeline',
+  username: 'mountainClimber'
+})

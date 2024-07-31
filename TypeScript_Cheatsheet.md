@@ -8,7 +8,7 @@ Specify type of variable
 let first: string; // Set variable 'first' to be string
 ```
 #### Variable in function + optional
-- **?** Optional argument of function
+- **?** Optional parameter of function
 ```typescript
 function greet(name?: string) { // optional
     console.log(`Hello, ${ name || 'stranger' }!`);
@@ -148,7 +148,8 @@ function getFilledArray<T>(value: T, n: number): T[] {
 let stringArray: string[]; 
 let numberArray: number[];
 
-stringArray = getFilledArray<string>('hi',6); // Passing string 'hi' as a T and 6 as a number. stringArray is type string[] so is output of the function: T[] is string[] in this case.
+stringArray = getFilledArray<string>('hi',6); // Passing string 'hi' as a T and 6 as a number. 
+//stringArray is type string[] so is output of the function: T[] is string[] in this case.
 // The same with number as parameter, and list of number as output
 numberArray = getFilledArray<number>(9,6); 
 
@@ -379,17 +380,17 @@ touch 'folder_name/filename.ts'
 ### Install typescript locally inside of project
 #### Install packages locally
 This creates packages.json, when I can see typescript version as dependency
-'''
+```
 npm init --yes
-'''
+```
 #### Install typescript as dev dependency
 This creates node_models and package-lock.json
-'''
+```
 npm install --save-dev typescript
-'''
+```
 
 To run the instance of typescript installed as a dependency of our project, we’ll need to add a script to package.json. Under the scripts key in package.json, add the following "tsc" command:
-'''json{
+```json{
   // ...
   "scripts": {
     "tsc": "tsc",
@@ -397,13 +398,13 @@ To run the instance of typescript installed as a dependency of our project, we�
   },
   // ...
 }
-'''
+```
 By adding this "tsc" script, the npm command will find and run the instance of tsc installed in node_modules.
 
 #### Generate tsconfig.json file
-'''
+```
 npm run tsc -- --init
-'''
+```
 Here’s what this command accomplishes:
 
 - **npm run tsc:** This runs the "tsc" script in package.json, which runs the instance of tsc installed as a dependency of our project.
@@ -411,17 +412,17 @@ Here’s what this command accomplishes:
 - **--init:** This is TypeScript CLI’s initialization flag, which will produce a tsconfig.json file.
 
 #### Running typescript
-'''
+```
 npm run tsc
-'''
+```
 
 #### Automatically restart tsc after some change
-'''
+```
 npm run tsc -- --watch
-'''
+```
 
 #### Configurations
 Get the basic configuration with:
-'''
+```
 npm install --save-dev @tsconfig/recommended
-'''
+```

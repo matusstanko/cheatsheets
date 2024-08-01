@@ -1,4 +1,4 @@
-# javascript Cheatsheet
+# JavaScript Cheatsheet
 Matúš Stanko 07/2024
 Based on [codecademy.com/Introduction-to-JavaScript](https://www.codecademy.com/enrolled/courses/introduction-to-javascript)
 

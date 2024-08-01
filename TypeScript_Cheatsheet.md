@@ -395,7 +395,8 @@ To run the instance of typescript installed as a dependency of our project, weâ€
 ```json{
   // ...
   "scripts": {
-    "tsc": "tsc",
+    "tsc": "tsc", 
+    "start": "src/index.js" // path to js file
     // ...
   },
   // ...

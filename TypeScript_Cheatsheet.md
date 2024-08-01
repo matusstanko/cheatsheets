@@ -1,4 +1,6 @@
 # TypeScript Cheatsheet
+Matúš Stanko 07/2024
+Based on [codecademy.com/learn-typescript](https://www.codecademy.com/enrolled/courses/learn-typescript)
 
 ## Anotations
 Specify type of variable
